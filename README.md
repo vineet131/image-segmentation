@@ -20,5 +20,4 @@ Tensorflow datasets (for Oxford/IIIT Pets dataset) (`pip install tfds-nightly`) 
 2. Save the TFRecord file at ./datasets/ (Unable to upload the original files due to Github's 25MB file upload limit
 
 <h3>Run the file:</h3>
-
-Change to the location where you downloaded this repo and run `python image_segmentation.py`
+On command line, set the current directory to where you downloaded this repo and run `python image_segmentation.py`
