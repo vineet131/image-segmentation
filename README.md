@@ -1,7 +1,7 @@
 # image-segmentation
 Semantic segmentation using CNNs, performed on public datasets like Oxford/IIIT Pets and PASCAL VOC
 
-<h3>About Image Segmentation:<\h3>
+<h3>About Image Segmentation:</h3>
  
 Read about Image Segmentation here (where the modded_unet model was taken from): https://www.tensorflow.org/tutorials/images/segmentation
  
