@@ -1,4 +1,4 @@
-import tensorflow as tf, numpy as np
+import tensorflow as tf
 
 def modded_unet(img_size, n_classes):
     #Using Mobilenetv2 as the base
@@ -70,5 +70,4 @@ def modded_unet(img_size, n_classes):
                             loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                             metrics=["accuracy"],
                             run_eagerly=True)
-    print(model_final.summary())
     return model_final

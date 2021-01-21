@@ -24,7 +24,7 @@ def import_pascalvoc(img_size):
     Vehicle: aeroplane, bicycle, boat, bus, car, motorbike, train
     Indoor: bottle, chair, dining table, potted plant, sofa, tv/monitor
 
-    Pixel value 0 is background and pixel value 255 (arbitrary boundaryb b/w background and object class) has been converted to 0
+    Pixel value 0 is background and pixel value 255 (arbitrary boundary b/w background and object class) has been converted to 0
     """
     TRAIN_FILEPATH = "./datasets/train-0000*-of-00004.tfrecord"
     TEST_FILEPATH = "./datasets/trainval-0000*-of-00004.tfrecord"

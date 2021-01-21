@@ -1,14 +1,15 @@
 import tensorflow as tf, numpy as np, matplotlib.pyplot as plt
 from tensorflow.keras.callbacks import TensorBoard
 from get_dataset import return_dataset
-from models import modded_unet
+from models import get_model
 plt.style.use('dark_background')
 
-MODEL_NAME = "oxford_pets"
+MODEL_NAME = "modded_unet"
+DATASET_NAME = "oxford_pets"
 classes_dict = {"oxford_pets":3,
                 "pascal_voc":21}
 IMG_SIZE = 224
-N_CLASSES = classes_dict[MODEL_NAME]
+N_CLASSES = classes_dict[DATASET_NAME]
 EPOCHS = 13
 BATCH_SIZE = 12
 MODEL_SAVEPATH = "./saved_models/"
@@ -27,9 +28,9 @@ class SegModel:
                 self.model = self.load_model(model_path)
             except:
                 print("\nError loading model. Building model with randomised weights\n")
-                self.model = modded_unet.modded_unet(IMG_SIZE, N_CLASSES)
+                self.model = get_model.main(MODEL_NAME, IMG_SIZE, N_CLASSES)
         else:
-            self.model = modded_unet.modded_unet(IMG_SIZE, N_CLASSES)
+            self.model = get_model.main(MODEL_NAME, IMG_SIZE, N_CLASSES)
     
     def train_model(self, train_data, savepath, save, val_data=None):
         if val_data is None:
@@ -110,11 +111,12 @@ class SegModel:
         plt.tight_layout()
         plt.show()
 
-model = SegModel(MODEL_SAVEPATH + MODEL_NAME)
+#model = SegModel(MODEL_SAVEPATH + DATASET_NAME)
+model = SegModel()
 #tf.keras.utils.plot_model(model, show_shapes=True)
 
-train, val, test = return_dataset(MODEL_NAME, IMG_SIZE)
-history = model.train_model(train, savepath=MODEL_SAVEPATH + MODEL_NAME, save=True)#, val_data=val)
-results = model.validate_model(val)
-model.plot_train_stats(history)
+train, val, test = return_dataset(DATASET_NAME, IMG_SIZE)
+#history = model.train_model(train, savepath=MODEL_SAVEPATH + DATASET_NAME, save=True)#, val_data=val)
+#results = model.validate_model(val)
+#model.plot_train_stats(history)
 model.sample_prediction(test)
